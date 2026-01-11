@@ -1,0 +1,27 @@
+CREATE TABLE IF NOT EXISTS tracks (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  path TEXT UNIQUE NOT NULL,
+  title TEXT,
+  artist TEXT,
+  album TEXT,
+  duration REAL,
+  metadata TEXT
+);
+
+CREATE TABLE IF NOT EXISTS playlists (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS playlist_tracks (
+  playlist_id INTEGER NOT NULL,
+  track_id INTEGER NOT NULL,
+  position INTEGER NOT NULL,
+  PRIMARY KEY (playlist_id, track_id)
+);
+
+CREATE TABLE IF NOT EXISTS devices (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  mountPath TEXT UNIQUE NOT NULL,
+  name TEXT
+);
