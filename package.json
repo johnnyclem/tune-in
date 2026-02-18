@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"vite --config src/renderer/vite.config.ts\" \"npm:electron\"",
-    "electron": "VITE_DEV_SERVER_URL=http://localhost:5173 wait-on http://localhost:5173 && electron -r ts-node/register src/main/main.ts",
+    "electron": "npm run build:main && VITE_DEV_SERVER_URL=http://localhost:5173 wait-on http://localhost:5173 && electron dist/main/main.js",
     "build": "npm run build:renderer && npm run build:main",
     "build:main": "tsc -p tsconfig.main.json",
     "build:renderer": "vite build --config src/renderer/vite.config.ts",
@@ -28,6 +28,8 @@
     "react-window": "^1.8.10"
   },
   "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/fluent-ffmpeg": "^2.1.28",
     "@types/fs-extra": "^11.0.4",
     "@types/jest": "^29.5.11",
     "@types/node": "^20.10.6",
